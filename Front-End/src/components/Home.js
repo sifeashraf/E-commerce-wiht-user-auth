@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 export default function Home() {
   let [products, seProducts] = useState([]);
   let usernow = useContext(userdatacontext);
-  let token = usernow.auth.token;
+  // let token = usernow.auth.token;
   let [updated, setUpdated] = useState(false);
   let [direction, setDirection] = useState("vertical");
   let cookie = new Cookies();
@@ -79,12 +79,10 @@ export default function Home() {
               md={2}
               lg={3}
               className={`product-box ${direction}`}
-              onClick={() => navigate(`product/buy/${product.id}`)}
-            >
+              onClick={() => navigate(`product/buy/${product.id}`)}>
               <div
                 className="product-box-image"
-                style={{ backgroundImage: `url(${product.image})` }}
-              ></div>
+                style={{ backgroundImage: `url(${product.image})` }}></div>
               <div className="text">
                 <h3 className="product-title">{product.title}</h3>
                 <p className="product-text">{product.description}</p>
