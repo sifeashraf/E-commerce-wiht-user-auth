@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body * {
+  font-family: "Cairo", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
+}
+
+#root {
+  height: 100vh;
+}
+a {
+  text-decoration: none !important;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  /* width: 80%; */
+  /* margin: auto; */
+  padding: 20px;
+  margin: 0% 0% 2%;
+}
+.registernav {
+  text-decoration: none;
+}
+.btn {
+  margin-left: 10px;
+}
+.flex {
+  display: flex;
+}
+
+.main-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+
+  gap: 10px;
+}
+.App {
+  height: 100%;
+}
