@@ -38,7 +38,6 @@ export default function PersistLogin() {
         }
       }
     };
-    console.log(token);
     !token ? refreshtoken() : setLoading(false);
   }, [token]);
 

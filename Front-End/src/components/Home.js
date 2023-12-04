@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 export default function Home() {
   let [products, seProducts] = useState([]);
   let usernow = useContext(userdatacontext);
-  // let token = usernow.auth.token;
   let [updated, setUpdated] = useState(false);
   let [direction, setDirection] = useState("vertical");
   let cookie = new Cookies();
