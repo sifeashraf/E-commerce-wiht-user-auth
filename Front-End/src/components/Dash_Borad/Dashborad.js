@@ -1,9 +1,8 @@
 import React from "react";
-import TopBar from "./Top-Bar";
-import SideBar from "./Side-Bar";
+import TopBar from "../Re-usable_components/Top-Bar";
+import SideBar from "../Re-usable_components/Side-Bar";
 import "./DashBorad.css";
-// import "./Signup.css";
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 export default function Dashborad() {
   return (
     <>

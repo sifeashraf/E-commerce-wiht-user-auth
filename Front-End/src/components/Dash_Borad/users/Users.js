@@ -1,14 +1,13 @@
 import axios from "axios";
-import React, { useCallback, useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { LuPenSquare } from "react-icons/lu";
 import { Link } from "react-router-dom";
-import { userdatacontext } from "./context";
 import Cookies from "universal-cookie";
+import { useSelector } from "react-redux";
 export default function Users() {
   let [users, setusers] = useState([]);
-  let usernow = useContext(userdatacontext);
-  let token = usernow.auth.token;
+  let { token } = useSelector((data) => data.Authslice);
   let [updated, setUpdated] = useState(false);
   let cookie = new Cookies();
   let gettoken = cookie.get("Bearer");
@@ -36,9 +35,7 @@ export default function Users() {
             Authorization: "Bearer " + token,
           },
         });
-        // console.log(request.data);
         setusers(request.data);
-        // console.log(usernow.auth.user);
       } catch (error) {
         console.log(error);
       }

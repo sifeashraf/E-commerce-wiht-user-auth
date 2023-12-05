@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "./Form";
+import Form from "../../Re-usable_components/Form";
 
 export default function Creatusser() {
   return (

@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { userdatacontext } from "./context";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./Header";
+import Header from "../Re-usable_components/Header";
 import { useNavigate } from "react-router-dom";
-import Cookies from "universal-cookie";
+import { useDispatch } from "react-redux";
+import { login } from "../globalstate/Authslice";
 export default function Login() {
   let [userdata, setUserData] = useState({
     email: "",
@@ -13,7 +13,7 @@ export default function Login() {
   });
   let [errormasge, seterrormasge] = useState([]);
   let [emailError, setEmailError] = useState("");
-  let usernow = useContext(userdatacontext);
+  let dispatch = useDispatch();
 
   let navigation = useNavigate();
   const dataHandler = (e) => {
@@ -51,13 +51,9 @@ export default function Login() {
           password: userdata.password,
         });
         if (res.status >= 200 && res.status < 300) {
-          window.localStorage.setItem("email", userdata.email);
-          usernow.setAuth({ token: res.data.data.token, user: userdata.email });
           let token = res.data.data.token;
-          const cookie = new Cookies();
-          const cookietoekn = cookie.set("Bearer", token);
-          // console.log(res.data.data.token);
-          // console.log(usernow);
+          let user = userdata.email;
+          dispatch(login({ token, user }));
           navigation("/");
         }
       } catch (error) {

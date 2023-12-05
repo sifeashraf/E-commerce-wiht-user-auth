@@ -1,16 +1,14 @@
 import React from "react";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import Users from "./components/Users";
-import SignUp from "./components/SignUp";
-import Login from "./components/Login";
-import Home from "./components/Home";
-import Dashborad from "./components/Dashborad";
-import UpdateUser from "./components/UpdateUser";
-import Creatusser from "./components/CreatUser";
-import AuthRequird from "./components/AuthRequird";
-import Container from "react-bootstrap/Container";
-import PersistLogin from "./components/PersistLogin";
+import Users from "./components/Dash_Borad/users/Users";
+import SignUp from "./components/Access_Operations/SignUp";
+import Login from "./components/pages/Login";
+import Home from "./components/pages/Home";
+import Dashborad from "./components/Dash_Borad/Dashborad";
+import UpdateUser from "./components/Dash_Borad/users/UpdateUser";
+import Creatusser from "./components/Dash_Borad/users/CreatUser";
+import AuthRequird from "./components/Access_Operations/AuthRequird";
+import PersistLogin from "./components/Access_Operations/PersistLogin";
 import Products from "./components/Dash_Borad/Products/Products";
 import CreatProduct from "./components/Dash_Borad/Products/CreatProduct";
 import UpdateProduct from "./components/Dash_Borad/Products/UpdateProduct";
@@ -24,10 +22,10 @@ export let router = createBrowserRouter([
   { path: "/register", element: <SignUp /> },
   { path: "/login", element: <Login /> },
   {
-    element: <AuthRequird />,
+    element: <PersistLogin />,
     children: [
       {
-        element: <PersistLogin />,
+        element: <AuthRequird />,
         children: [
           {
             path: "/dashborad",
@@ -41,35 +39,10 @@ export let router = createBrowserRouter([
               { path: "product/:id", element: <UpdateProduct /> },
             ],
           },
+          { path: "/product/buy/:id", element: <ProductBuy /> },
+          { path: "product/mylist", element: <MyList /> },
         ],
       },
     ],
   },
 ]);
-export function App() {
-  return (
-    <div className="App">
-      {/* <Container>
-        <Routes>
-          <Route path="/" element={} />
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route element={<AuthRequird />}>
-            <Route element={<PersistLogin />}>
-              <Route path="/dashborad" element={<Dashborad />}>
-                <Route path="user" element={<Users />} />
-                <Route path="user/:id" element={<UpdateUser />} />
-                <Route path="user/create" element={<Creatusser />} />
-                <Route path="product" element={<Products />} />
-                <Route path="product/create" element={<CreatProduct />} />
-                <Route path="product/:id" element={<UpdateProduct />} />
-              </Route>
-              <Route path="product/buy/:id" element={<ProductBuy />} />
-              <Route path="product/mylist" element={<MyList />} />
-            </Route>
-          </Route>
-        </Routes>
-      </Container> */}
-    </div>
-  );
-}

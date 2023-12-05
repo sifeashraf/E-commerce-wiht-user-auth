@@ -3,12 +3,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { router } from "./App";
 import { RouterProvider } from "react-router-dom";
-import Usercontext from "./components/context";
+import { Provider } from "react-redux";
+import store from "./components/globalstate/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// const noroot = ReactDOM.createRoot(document.getElementById("noroot"));
 
 root.render(
-  <Usercontext>
+  <Provider store={store}>
     <RouterProvider router={router} />
-  </Usercontext>
+  </Provider>
 );

@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { userdatacontext } from "./context";
 import { Navigate, Outlet } from "react-router-dom";
 import Cookies from "universal-cookie";
 export default function AuthRequird() {

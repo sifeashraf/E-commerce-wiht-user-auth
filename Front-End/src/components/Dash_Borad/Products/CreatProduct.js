@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { userdatacontext } from "../../context";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useSelector } from "react-redux";
 
 export default function CreatProduct() {
   let [product, SetProduct] = useState({
@@ -12,8 +12,8 @@ export default function CreatProduct() {
   });
   let [image, setImage] = useState("");
   let navgiate = useNavigate();
-  let usernow = useContext(userdatacontext);
-  let token = usernow.auth.token;
+  let { token } = useSelector((data) => data.Authslice);
+
   const dataHandler = (e) => {
     let value = e.target.value;
     let name = e.target.id;
@@ -35,9 +35,8 @@ export default function CreatProduct() {
           Authorization: "Bearer " + token,
         },
       });
-      console.log(res);
+      //dont navigate the user cause if he want to add more than one product
     } catch (error) {
-      // setErrorFromBackend(error.response.data.message);
       console.log(error);
     }
   }

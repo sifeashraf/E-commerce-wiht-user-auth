@@ -1,16 +1,18 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { userdatacontext } from "./context";
-import Loading from "./Loading";
+import Loading from "../pages/Loading";
 import Cookies from "universal-cookie";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, login } from "../globalstate/Authslice";
+
 export default function PersistLogin() {
+  let dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  let usernow = useContext(userdatacontext);
-  let token = usernow.auth.token;
   const cookie = new Cookies();
   const gettoken = cookie.get("Bearer");
   let navgiate = useNavigate();
+  let { token } = useSelector((data) => data.Authslice);
 
   useEffect(() => {
     let refreshtoken = async () => {
@@ -22,18 +24,12 @@ export default function PersistLogin() {
             },
           })
           .then((res) => {
-            cookie.remove("Bearer");
-            cookie.remove("Bearer");
             cookie.set("Bearer", res.data.token);
-            usernow.setAuth(() => {
-              return { user: res.data.user, token: res.data.token };
-            });
+            dispatch(login({ user: res.data.user, token: res.data.token }));
           });
       } catch (error) {
-        console.log(error.response.status);
         if (error.response.status === 401) {
-          cookie.remove("Bearer");
-          usernow.setAuth({});
+          dispatch(logout());
           navgiate("/");
         }
       }

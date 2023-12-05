@@ -38,9 +38,5 @@ nav {
   align-items: center;
   justify-content: center;
   margin-top: 10px;
-
   gap: 10px;
-}
-.App {
-  height: 100%;
 }

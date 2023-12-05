@@ -1,25 +1,21 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { userdatacontext } from "../../context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cookies from "universal-cookie";
-import MyList from "./MyList";
+import { useSelector } from "react-redux";
 export default function ProductBuy() {
   let [product, setProduct] = useState({
     title: "",
     description: "",
     image: "",
-    id: 0,
   });
   let navgiate = useNavigate();
-  let usernow = useContext(userdatacontext);
-  let token = usernow.auth.token;
+  let { token } = useSelector((data) => data.Authslice);
   let cookie = new Cookies();
   let pruches = [];
-  let id = window.location.pathname.slice("-1")[0];
-
+  let { id } = useParams();
   const dataHandler = (e) => {
     let value = e.target.value;
     let name = e.target.id;
@@ -70,8 +66,7 @@ export default function ProductBuy() {
       <div className="show-product">
         <div
           className="product-image-Preview"
-          style={{ backgroundImage: `url(${product.image})` }}
-        ></div>
+          style={{ backgroundImage: `url(${product.image})` }}></div>
         <div className="product-info">
           <h2>{product.title}</h2>
           <p> {product.description}</p>

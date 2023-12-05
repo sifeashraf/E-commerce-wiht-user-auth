@@ -1,17 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../App.css";
+import "../../App.css";
 import Button from "react-bootstrap/Button";
-import { useContext } from "react";
 import Cookies from "universal-cookie";
-import { userdatacontext } from "./context";
 import axios from "axios";
-
+import { useDispatch } from "react-redux";
+import { logout } from "../globalstate/Authslice";
 export default function Header() {
+  let dispatch = useDispatch();
   let navgiate = useNavigate();
   let cookie = new Cookies();
   let gettoken = cookie.get("Bearer");
-  let usernow = useContext(userdatacontext);
   let handleLogOut = async () => {
     try {
       await axios.post("http://127.0.0.1:8000/api/logout", null, {
@@ -20,7 +19,7 @@ export default function Header() {
         },
       });
       cookie.remove("Bearer");
-      usernow.setAuth({});
+      dispatch(logout());
       navgiate("/");
     } catch (error) {
       console.log(error);
@@ -64,9 +63,6 @@ export default function Header() {
           </>
         )}
       </div>
-      {/* <Button className="registernav" style={{ color: "white" }} >
-          Log out
-        </Button> */}
     </nav>
   );
 }

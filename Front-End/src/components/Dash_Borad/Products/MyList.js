@@ -1,20 +1,17 @@
 import axios from "axios";
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
-import { userdatacontext } from "../../context";
-import { useNavigate } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Header from "../../Header";
-import "../../website.css";
+import Header from "../../Re-usable_components/Header";
+import { useSelector } from "react-redux";
 export default function MyList() {
   let [product, setProduct] = useState([]);
   let cookie = new Cookies();
   let getproudct = cookie.get("bought-product");
   let [direction, setDirection] = useState("vertical");
 
-  let usernow = useContext(userdatacontext);
-  let token = usernow.auth.token;
+  let { token } = useSelector((data) => data.Authslice);
 
   let myproduct = [];
 
@@ -45,7 +42,6 @@ export default function MyList() {
       }
 
       setProduct(myproduct);
-      console.log(product);
     };
     getdata();
   }, []);
@@ -83,8 +79,7 @@ export default function MyList() {
             <Col md={2} lg={3} className={`product-box ${direction}`}>
               <div
                 className="product-box-image"
-                style={{ backgroundImage: `url(${product.image})` }}
-              ></div>
+                style={{ backgroundImage: `url(${product.image})` }}></div>
               <div className="text">
                 <h3 className="product-title">{product.title}</h3>
                 <p className="product-text">{product.description}</p>

@@ -1,17 +1,14 @@
 import axios from "axios";
-import React, { useCallback, useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { LuPenSquare } from "react-icons/lu";
 import { Link, useNavigate } from "react-router-dom";
-import { userdatacontext } from "../../context";
-import Cookies from "universal-cookie";
+import { useSelector } from "react-redux";
 export default function Products() {
   let [products, seProducts] = useState([]);
-  let usernow = useContext(userdatacontext);
-  let token = usernow.auth.token;
+  let { token } = useSelector((data) => data.Authslice);
   let [updated, setUpdated] = useState(false);
-  let cookie = new Cookies();
-  let gettoken = cookie.get("Bearer");
+
   let navgiate = useNavigate();
   const deletproduct = async (id) => {
     try {
@@ -37,9 +34,7 @@ export default function Products() {
             Authorization: "Bearer " + token,
           },
         });
-        // console.log(request.data);
         seProducts(request.data);
-        // console.log(usernow.auth.user);
       } catch (error) {
         console.log(error);
       }

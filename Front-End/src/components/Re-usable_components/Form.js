@@ -1,23 +1,24 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { userdatacontext } from "./context";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Signup.css";
+import ".././Signup.css";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../globalstate/Authslice";
+import Cookies from "universal-cookie";
 
 export default function Form({ operations, endpoint, email, name, naviGate, styleRegister }) {
+  let dispatch = useDispatch();
   let [userdata, setUserData] = useState({
     name: "",
     email: "",
     password: "",
     repassword: "",
   });
-  const [errorfrombackend, setErrorFromBackend] = useState({});
+  let { token } = useSelector((data) => data.Authslice);
   let navgiate = useNavigate();
-  let usernow = useContext(userdatacontext);
-  let token = usernow.auth.token;
-  console.log(endpoint);
+  const cookie = new Cookies();
   useEffect(() => {
     setUserData({ ...userdata, email: email, name: name });
   }, [name, email]);
@@ -43,12 +44,11 @@ export default function Form({ operations, endpoint, email, name, naviGate, styl
     e.preventDefault();
     //usless if just to hide them all
     if (userdata) {
-      //Regx for test the usestate data if match with serever requpments
+      //Regx for test the userdata data if match with serever requpments
       const regExpEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
       const regExpName = /^[a-z ,.'-]+$/i;
       const regExppassword = /.*/;
       // const regExppassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-      //test the them
 
       if (
         userdata.email === "" ||
@@ -105,13 +105,14 @@ export default function Form({ operations, endpoint, email, name, naviGate, styl
             });
 
             //add data to local storage
-            const newtoken = res.data.data.token;
+            const token = res.data.data.token;
             const user = res.data.data.user;
-            usernow.setAuth({ token: newtoken, user });
+
+            cookie.set("Bearer", token);
+            dispatch(login({ user, token }));
           }
-          navgiate(naviGate || "/dashborad/user");
+          navgiate(naviGate || "/");
         } catch (error) {
-          // setErrorFromBackend(error.response.data.message);
           console.log(error);
         }
 

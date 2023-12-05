@@ -1,17 +1,16 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { userdatacontext } from "../../context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useSelector } from "react-redux";
 export default function UpdateProduct() {
   let [product, setProduct] = useState({
     title: "",
     description: "",
   });
   let navgiate = useNavigate();
-  let usernow = useContext(userdatacontext);
-  let token = usernow.auth.token;
+  let { token } = useSelector((data) => data.Authslice);
 
   const dataHandler = (e) => {
     let value = e.target.value;
@@ -20,7 +19,7 @@ export default function UpdateProduct() {
       return { ...prevData, [name]: value };
     });
   };
-  let id = window.location.pathname.split("/").slice("-1")[0];
+  let { id } = useParams();
 
   useEffect(() => {
     let getdata = async () => {
@@ -31,7 +30,6 @@ export default function UpdateProduct() {
             Authorization: "Bearer " + token,
           },
         });
-        console.log(res);
         setProduct({ title: res.data[0].title, description: res.data[0].description });
       } catch (error) {
         console.log(error);

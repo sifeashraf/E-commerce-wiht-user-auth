@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "./Signup.css";
-import Form from "./Form";
+import Form from "../../Re-usable_components/Form";
 export default function UpdateUser() {
-  let navgiate = useNavigate();
   let [userdata, setUserData] = useState({
     name: "",
     email: "",
   });
-  let id = window.location.pathname.split("/").slice("-1")[0];
+  let { id } = useParams();
   useEffect(() => {
     let request = async () => {
       try {
