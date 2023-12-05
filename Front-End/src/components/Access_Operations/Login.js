@@ -11,7 +11,7 @@ import Header from "../Re-usable_components/Header";
 import axios from "axios";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import "./Signup.css";
 import { login } from "../globalstate/Authslice";
 export default function Login() {
   let [userdata, setUserData] = useState({

@@ -11,28 +11,72 @@
 .product-box :hover {
   cursor: pointer;
 }
-/* product in vertical */
 .product-box.vertical {
   border-radius: 15px;
   border: 1px solid #cbc1c1b3;
-  height: auto;
+  height: 410px;
   padding: 0;
   width: 300px;
   margin: 0 10px 30px;
 }
 
-.product-box.vertical .product-box-image {
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 185px; /* Set the desired height */
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  background-color: #ede8e8;
+.product-box {
+  width: 29%;
+  min-width: 244px;
+  height: 410px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+}
+@media (min-width: 1001px) {
+  .product-box {
+    width: 23.5%;
+    min-width: 250px;
+  }
+}
+@media (max-width: 1100px) {
+  .product-box {
+    width: 30%;
+    min-width: 288px;
+  }
+}
+@media (max-width: 640px) {
+  .product-box {
+    width: 48% !important;
+    min-width: 288px;
+  }
 }
 
-/* End product in vertical */
-/* product in horizontal */
+.product-box .card-image {
+  width: 100%;
+  height: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center -20px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.product-box .card-body {
+  padding: 0px 10px;
+}
+
+.product-box .card-body h3 {
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+.product-box .card-body .card-text {
+  font-size: 14px;
+  height: 80px;
+  overflow: hidden;
+  --max-lines: 4;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--max-lines);
+}
+
 .product-box.horizontal {
   width: 100%;
   display: flex;
@@ -42,43 +86,7 @@
   padding: 0;
   margin: 20px 0;
 }
-
-.product-box.horizontal .product-box-image {
-  background-color: #fff;
-  padding: 20px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: top center;
-  width: 250px;
-  height: 100%; /* Set the desired height */
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  background-color: #ede8e8;
-}
-
-/* End product in horizontal */
-
-.product-box .text {
-  padding: 0 10px 10px 10px;
-}
-.product-text {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-}
-
-.product-image-Preview {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: top center;
-
-  height: 400px;
-  width: 70%;
-}
-.product-info {
-  width: 30%;
-  position: relative;
-}
-.buy-btn {
+.product-box.horizontal .card-image {
+  height: 100%;
+  width: 220px;
 }

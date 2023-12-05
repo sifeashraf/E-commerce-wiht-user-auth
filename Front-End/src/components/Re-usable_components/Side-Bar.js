@@ -64,7 +64,7 @@ export default function SideBar() {
           <MdAddShoppingCart className="icon" /> New Product
         </Link>
       </div>
-      <div className="sidebar-activeicon">
+      <div className="sidebar-activation">
         <div className="links">
           <Link to={"/dashborad/user"} className="item-link">
             <FaUsers className="icon" /> users

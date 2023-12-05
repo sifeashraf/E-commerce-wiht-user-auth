@@ -10,6 +10,8 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
+//import css
+import "../DashBoard.css";
 export default function ProductBuy() {
   let [product, setProduct] = useState({
     title: "",
@@ -19,7 +21,6 @@ export default function ProductBuy() {
   let navgiate = useNavigate();
   let { token } = useSelector((data) => data.Authslice);
   let cookie = new Cookies();
-  let pruches = [];
   let { id } = useParams();
   const dataHandler = (e) => {
     let value = e.target.value;
@@ -38,6 +39,7 @@ export default function ProductBuy() {
             Authorization: "Bearer " + token,
           },
         });
+        console.log(res.data[0].image);
         setProduct({
           title: res.data[0].title,
           description: res.data[0].description,
@@ -75,7 +77,12 @@ export default function ProductBuy() {
         <div className="product-info">
           <h2>{product.title}</h2>
           <p> {product.description}</p>
-          <Button variant="outline-primary" type="submit" onClick={Submit} className="buy-btn">
+          <Button
+            style={{ display: "block", margin: "auto" }}
+            variant="outline-primary"
+            type="submit"
+            onClick={Submit}
+            className="buy-btn">
             Buy Product
           </Button>
         </div>

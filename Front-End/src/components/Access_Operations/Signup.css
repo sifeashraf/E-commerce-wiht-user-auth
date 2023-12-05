@@ -39,14 +39,12 @@ form {
   padding: 20px;
   border-radius: 1px;
   display: flex;
-  /* align-items: center;
-  justify-content: center; */
+
   flex-direction: column;
   gap: 40px;
 }
 
 .Main-form .input-box {
-  /* display: flex; */
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;

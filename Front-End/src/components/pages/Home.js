@@ -1,6 +1,6 @@
 //import hook
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 //import component
 import Header from "../Re-usable_components/Header";
@@ -14,6 +14,8 @@ import Cookies from "universal-cookie";
 //import css
 import "./website.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+let diractionvar = "vertical";
 
 export default function Home() {
   let [products, seProducts] = useState([]);
@@ -45,10 +47,7 @@ export default function Home() {
   }, [updated]);
 
   let productdirection = (e) => {
-    document.querySelectorAll("#group-1").forEach((input) => {
-      input.removeAttribute("checked");
-    });
-    e.target.setAttribute("checked", "");
+    diractionvar = `${e.target.id}`;
     setDirection(e.target.value);
   };
   return (
@@ -58,8 +57,9 @@ export default function Home() {
         <div className="direction-box">
           <label htmlFor="vertical">vertical</label>
           <input
+            checked={diractionvar === "vertical"}
             type="radio"
-            id="group-1"
+            id="vertical"
             name="group-1"
             onClick={(e) => productdirection(e)}
             value="vertical"
@@ -68,8 +68,9 @@ export default function Home() {
         <div className="direction-box">
           <label htmlFor="horizontal">horizontal</label>
           <input
+            checked={diractionvar === "horizontal"}
             type="radio"
-            id="group-1"
+            id="horizontal"
             name="group-1"
             onClick={(e) => productdirection(e)}
             value="horizontal"
@@ -84,18 +85,21 @@ export default function Home() {
               md={2}
               lg={3}
               className={`product-box ${direction}`}
-              onClick={() => navigate(`product/buy/${product.id}`)}>
+              onClick={() => navigate(`/product/buy/${product.id}`)}>
               <div
-                className="product-box-image"
-                style={{ backgroundImage: `url(${product.image})` }}></div>
-              <div className="text">
-                <h3 className="product-title">{product.title}</h3>
-                <p className="product-text">{product.description}</p>
+                className="card-image"
+                style={{
+                  backgroundImage: `url(${product.image})`,
+                }}
+              />
+              <div className="card-body">
+                <h3>{product.title}</h3>
+                <div className="card-text">{product.description}</div>
               </div>
             </Col>
           ))
         ) : (
-          <div>please go to Dashboard and enter a product</div>
+          <div>{products ? "please wait one more second" : "please add more items"}</div>
         )}
       </Row>
     </>

@@ -13,7 +13,7 @@ import { login } from "../globalstate/Authslice";
 
 //imprt css
 import "bootstrap/dist/css/bootstrap.min.css";
-import ".././Signup.css";
+import "../Access_Operations/Signup.css";
 
 export default function Form({ operations, endpoint, email, name, naviGate, styleRegister }) {
   let dispatch = useDispatch();

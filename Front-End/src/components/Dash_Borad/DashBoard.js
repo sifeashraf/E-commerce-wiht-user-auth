@@ -4,7 +4,7 @@ import SideBar from "../Re-usable_components/Side-Bar";
 import { Outlet } from "react-router-dom";
 
 //import css
-import "./DashBorad.css";
+import "./DashBoard.css";
 
 export default function Dashborad() {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "../../Re-usable_components/Form";
 
-export default function Creatusser() {
+export default function CreatUser() {
   return (
     <>
       <Form
