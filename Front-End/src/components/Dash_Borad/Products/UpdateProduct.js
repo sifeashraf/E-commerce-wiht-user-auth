@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+//import hooks
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useSelector } from "react-redux";
+
+//import libraries
+import axios from "axios";
+
 export default function UpdateProduct() {
   let [product, setProduct] = useState({
     title: "",

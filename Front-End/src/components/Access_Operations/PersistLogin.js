@@ -1,10 +1,15 @@
-import axios from "axios";
+//import hooks
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+// import Components
 import { Outlet, useNavigate } from "react-router-dom";
 import Loading from "../pages/Loading";
-import Cookies from "universal-cookie";
-import { useDispatch, useSelector } from "react-redux";
 import { logout, login } from "../globalstate/Authslice";
+
+//import libaries
+import axios from "axios";
+import Cookies from "universal-cookie";
 
 export default function PersistLogin() {
   let dispatch = useDispatch();

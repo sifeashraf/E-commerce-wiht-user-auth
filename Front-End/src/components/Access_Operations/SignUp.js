@@ -1,10 +1,7 @@
-import React, { useContext, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import Header from "../Re-usable_components/Header";
-import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import Components
 import Form from "../Re-usable_components/Form";
+import Header from "../Re-usable_components/Header";
+
 export default function SignUp() {
   return (
     <>

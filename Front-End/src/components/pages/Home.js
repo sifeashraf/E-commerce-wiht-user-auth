@@ -1,14 +1,20 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import "./website.css";
-import Cookies from "universal-cookie";
-import Header from "../Re-usable_components/Header";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import hook
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+//import component
+import Header from "../Re-usable_components/Header";
+import { Row, Col } from "react-bootstrap";
 import { logout } from "../globalstate/Authslice";
+
+//import libraries
+import axios from "axios";
+import Cookies from "universal-cookie";
+
+//import css
+import "./website.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 export default function Home() {
   let [products, seProducts] = useState([]);
   let [updated, setUpdated] = useState(false);

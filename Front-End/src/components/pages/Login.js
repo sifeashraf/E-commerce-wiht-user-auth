@@ -1,10 +1,17 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import axios from "axios";
-import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "../Re-usable_components/Header";
+//import hook
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+
+//import component
+import Button from "react-bootstrap/Button";
+import Header from "../Re-usable_components/Header";
+
+//import libaries
+import axios from "axios";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import { login } from "../globalstate/Authslice";
 export default function Login() {
   let [userdata, setUserData] = useState({

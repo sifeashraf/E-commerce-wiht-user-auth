@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+//import hooks
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Cookies from "universal-cookie";
 import { useSelector } from "react-redux";
+
+// import Components
+import Button from "react-bootstrap/Button";
+
+//import libaries
+import axios from "axios";
+import Cookies from "universal-cookie";
+
 export default function ProductBuy() {
   let [product, setProduct] = useState({
     title: "",

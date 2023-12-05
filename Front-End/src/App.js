@@ -1,5 +1,8 @@
-import React from "react";
-import "./App.css";
+//import hook
+import { createBrowserRouter } from "react-router-dom";
+
+//import component
+
 import Users from "./components/Dash_Borad/users/Users";
 import SignUp from "./components/Access_Operations/SignUp";
 import Login from "./components/pages/Login";
@@ -15,7 +18,8 @@ import UpdateProduct from "./components/Dash_Borad/Products/UpdateProduct";
 import ProductBuy from "./components/Dash_Borad/Products/ProductBuy";
 import MyList from "./components/Dash_Borad/Products/MyList";
 
-import { createBrowserRouter } from "react-router-dom";
+//import css
+import "./App.css";
 
 export let router = createBrowserRouter([
   { path: "/", element: <Home /> },

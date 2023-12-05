@@ -1,9 +1,13 @@
-import React, { useState } from "react";
-import axios from "axios";
+//import hooks
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
+// import Components
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useSelector } from "react-redux";
+
+//import libaries
+import axios from "axios";
 
 export default function CreatProduct() {
   let [product, SetProduct] = useState({

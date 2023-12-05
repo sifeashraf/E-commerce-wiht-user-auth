@@ -1,12 +1,19 @@
-import React, { useEffect, useState, useContext } from "react";
-import axios from "axios";
+//import hook
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+//import component
 import Button from "react-bootstrap/Button";
+import Cookies from "universal-cookie";
+
+//import libaries
+import axios from "axios";
+import { login } from "../globalstate/Authslice";
+
+//imprt css
 import "bootstrap/dist/css/bootstrap.min.css";
 import ".././Signup.css";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../globalstate/Authslice";
-import Cookies from "universal-cookie";
 
 export default function Form({ operations, endpoint, email, name, naviGate, styleRegister }) {
   let dispatch = useDispatch();

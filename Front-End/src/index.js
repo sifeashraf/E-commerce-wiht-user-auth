@@ -1,10 +1,16 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
+//import hook
 import ReactDOM from "react-dom/client";
-import { router } from "./App";
 import { RouterProvider } from "react-router-dom";
-import { Provider } from "react-redux";
+
+//import component
+import { router } from "./App";
+
+//import libaries
 import store from "./components/globalstate/store";
+import { Provider } from "react-redux";
+
+//import css
+import "bootstrap/dist/css/bootstrap.min.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(

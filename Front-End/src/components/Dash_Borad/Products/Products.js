@@ -1,9 +1,15 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { AiFillDelete } from "react-icons/ai";
-import { LuPenSquare } from "react-icons/lu";
+//import hooks
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+
+// import Components
+import { AiFillDelete } from "react-icons/ai";
+import { LuPenSquare } from "react-icons/lu";
+
+//import libaries
+import axios from "axios";
+
 export default function Products() {
   let [products, seProducts] = useState([]);
   let { token } = useSelector((data) => data.Authslice);

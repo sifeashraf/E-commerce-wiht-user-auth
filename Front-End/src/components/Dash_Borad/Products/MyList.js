@@ -1,10 +1,15 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Cookies from "universal-cookie";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Header from "../../Re-usable_components/Header";
+//import hooks
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+
+// import Components
+import Header from "../../Re-usable_components/Header";
+import { Col, Row } from "react-bootstrap";
+
+//import libaries
+import axios from "axios";
+import Cookies from "universal-cookie";
+
 export default function MyList() {
   let [product, setProduct] = useState([]);
   let cookie = new Cookies();

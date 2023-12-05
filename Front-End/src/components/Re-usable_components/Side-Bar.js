@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+//import hook
+import { useEffect, useState } from "react";
+
+//import component
+import { Link } from "react-router-dom";
 import { FaUsers, FaUserPlus } from "react-icons/fa";
 import { MdAddShoppingCart, MdShoppingCartCheckout } from "react-icons/md";
 import { AiOutlineMenu } from "react-icons/ai";
+
 export default function SideBar() {
   let [linkselemnt, setLinkElemnt] = useState();
   let [sideiconele, setSideiconele] = useState();
@@ -44,22 +48,19 @@ export default function SideBar() {
         <Link
           to={"/dashborad/user/create"}
           className="item-link"
-          onClick={(e) => triggesidebarelemnt(e)}
-        >
+          onClick={(e) => triggesidebarelemnt(e)}>
           <FaUserPlus className="icon" /> new user
         </Link>
         <Link
           to={"/dashborad/product"}
           className="item-link"
-          onClick={(e) => triggesidebarelemnt(e)}
-        >
+          onClick={(e) => triggesidebarelemnt(e)}>
           <MdShoppingCartCheckout className="icon" /> Products
         </Link>
         <Link
           to={"/dashborad/product/create"}
           className="item-link"
-          onClick={(e) => triggesidebarelemnt(e)}
-        >
+          onClick={(e) => triggesidebarelemnt(e)}>
           <MdAddShoppingCart className="icon" /> New Product
         </Link>
       </div>
@@ -74,15 +75,13 @@ export default function SideBar() {
           <Link
             to={"/dashborad/product"}
             className="item-link"
-            onClick={(e) => triggesidebarelemnt(e)}
-          >
+            onClick={(e) => triggesidebarelemnt(e)}>
             <MdShoppingCartCheckout className="icon" /> Products
           </Link>
           <Link
             to={"/dashborad/product/create"}
             className="item-link"
-            onClick={(e) => triggesidebarelemnt(e)}
-          >
+            onClick={(e) => triggesidebarelemnt(e)}>
             <MdAddShoppingCart className="icon" /> New Product
           </Link>
         </div>
